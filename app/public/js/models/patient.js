@@ -2,8 +2,8 @@
 console.log("patient");
 var Patient = Backbone.Model.extend({
 	defaults: {
-		name: 'Esther',
-		sex: 'female'
+		name: '',
+		sex: ''
 	},
 	initialize: function(){
 		console.log("Patient profile created");

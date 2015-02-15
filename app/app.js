@@ -91,7 +91,7 @@ app.get( '/patients', function ( req, res ) {
   } );
 } );
 
-app.post( '/patient', function ( req, res ) {
+app.post( '/patients', function ( req, res ) {
   var name = req.body.name;
   var sex = req.body.sex;
 console.log(name + 'is :' + sex);
