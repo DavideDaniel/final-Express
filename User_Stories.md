@@ -1,31 +1,39 @@
 User Stories
 ---
 
-Users are patients and admins are doctors. We'll refer to them as such.
-Both sides of the application will be single page.
-The log in system itself will be a separate page.
+Users are consumers and admins are providers. We'll refer to them as such.
+Both sides of the application will be single page. (backbone)
+The log in and registration system itself will be a separate page.
+    The splash page will provide a choice of consumer vs provider.
+
+The provider will be able to register & log in as admin.
+    The provider will be identified locally with name/email & oAuth (Trello).
+        The provider will be able to access different cards pulled in from the Trello API.
+The provider will be able to see different consumer records on their caseload (nav up top maybe)
+The provider will be able to view each consumer as a single page.
+    Each consumer record will be editable by the provider.
+    Each consumer record will have empty boards that the provider can add issues to.
+        When ('clicked') each issue will populate the board with cards from the Trello API.
+            Each record will be pulled in from Trello API of the provider (in the future - own Trello like app inside the provider login)
 
 
-The patient will be able to register & log in.
-The patient will see their profile page (pic/no pic?).
-	Their profile page will have a list of current problems (diagnoses?)
-		Each problem will have boards assigned to them by the doctors that the patient can see.
-	Their profile page will have their prescriptions (if possible per HIPAA), any current problems.
-		The prescriptions will have reminders about refills. Span of usage - usage data in legibile font size(!)
-			The reminders will ping the Twilio API (possibly polling daily or per Dr requests) to send SMS messages to patient cell
-
-The doctor will be able to register & log in as admin.
-The doctor will see different patient records.
-	Each patient record will have boards made by the doctor. <- pulled in from API from dr
-		Each record will be pulled in from Trello API of the doctor (in the future - own Trello app inside the doctor login)
-The doctor will be able to view each patient as a single page.
-	Each page will have editable boards that are drawing info from their Trello API like the 
+The consumer will be able to register & log in.
+    Consumers will be identified locally with name/email/pw & additionally with oAuth (FB, Google).
+The consumer will see their profile page (pic/no pic?).
+	Their profile page will have a list of current issues assigned by provider.
+		Each issue will have boards assigned to them by the providers that the consumer can see.
+            Each board will have cards that will be accessible (like Pinterest)
+                Each card will have a 'Helpful' or 'Not helpful' designation.
+                    When ('clicked') these designations will notify the provider via view on provider side.
+			Unclicked cars will ping the Twilio API (possibly polling daily or per provider settings) to send SMS messages to consumer cell.
 
 
 Nice to have
 ---
-Analytics for doctor side - d3js
+Consumer profile page will have their prescriptions (if possible per HIPAA), any current issues.
+        Consumer prescriptions will have reminders about refills. Span of usage - usage data in legibile font size(!)
 
-Before 
+Analytics for provider side - d3js
+
 Before launch - 
 App will need security & encryption - HIPAA laws re security details for apps
