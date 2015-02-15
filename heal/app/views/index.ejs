@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+        <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+
+        <!-- Choose login -->
+        <div class="container">
+            <div id = "chooseLogin">
+                <button id = "consumerLogBtn">Login as a consumer</button>
+                <button id = "providerLogBtn">Login as a provider</button>
+            </div>
+            <form class="form-horizontal"> <!-- form -->
+            <div class="form-group"> <!-- form group -->
+            <label class="col-sm-4 control-label">First Name</label> <!-- label -->
+            <div class="col-sm-8"> <!-- controls -->
+            <input type="text" class="form-control" name="firstName" value="Andre" placeholder="" /> <!-- control -->
+        </div>
+        <label class="col-sm-4 control-label">Last Name</label> <!-- label -->
+        <div class="col-sm-8"> <!-- controls -->
+        <input type="text" class="form-control" name="lastName" value="Benjamin" placeholder="" /> <!-- control -->
+    </div>
+</div>
+<div id="loginTemplate"></div>
+
+<div id = "login"></div>
+<script>
+                        show_login = [
+                '<button class="btn-default" data-toggle="collapse" data-target="#article<%=article.id%>">Login as consumer</button>',
+                '',
+                '<br>',
+                '<div class="row collapse col-md-12 text-center" id="loginTemplate">',
+                        '<form action="/session" class="form-horizontal" method="POST">',
+                                                '<fieldset>',
+                                                                '<legend>Sign in as a consumer</legend>',
+                                                                '<div class="control-group">',
+                                                                                '<label for="full_name" class="controls">First & Last Name</label></div>',
+                                                                        '<div class="controls"><input type="text" name="full_name"></div>',
+                                                                        '<div class="control-group"><label for="password" class="controls">Password</label></div>',
+                                                                        '<div class="controls"><input type="password" name="password"></div>',
+                                                                        '<input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token()  %>"><br>',
+                                                                '<button class= "btn btn-default btn-sm">Sign In</button></form><br></div>'
+                                ].join("");
+                                                var LoginView = Backbone.View.extend({
+                                                    el: "#login",
+                                                    template: _.template($('#loginTemplate').html()),
+                                                    initialize: function() {
+                                                    this.render();
+                                                    },
+                                                    events: {"click #loginButton": "changeLogin"},
+                                                    changeLogin: function() {
+                                                    this.$el.html(this.template(
+                                                        {name: 'Alex Special',
+                                                        ingredients: ['spinach', 'mushrooms', 'cheese']}
+                                                    ));
+                                                    },
+                    
+                                                    render: function() {
+                                                    this.$el.html(this.template(
+                                                        { name: 'Bacon & Jalapeno Special', ingredients: ["cheese", "tomato sauce", 'bacon', 'jalapeno']
+                                                    }
+                                                    ))
+                                                    return this;
+                                                }})
+                                                    
+                    
+                                                    new LoginView();
+        </script>
+    </div>
+</body>
+</html>
