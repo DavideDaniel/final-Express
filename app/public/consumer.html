@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Consumer Page</title>
+</head>
+<body>
+	<% if @user  %>
+<h6>You are logged in as: <%= @user.screen_name  %></h6>
+<form action="/session" method="POST">
+<input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token()  %>">
+<input type="hidden" name = "_method" value = "DELETE">
+
+<button class='btn btn-danger btn-xs'>Sign Out</button>
+</form>
+
+<% else %>
+<%= button_to 'Sign In', login_path, class: 'btn btn-primary btn-xs', method: :get %>
+<% end  %>
+</body>
+</html>

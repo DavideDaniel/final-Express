@@ -11,7 +11,7 @@ The provider will be able to register & log in as admin.
         The provider will be able to access different cards pulled in from the Trello API.
 The provider will be able to see different consumer records on their caseload (nav up top maybe)
 The provider will be able to view each consumer as a single page.
-    Each consumer record will be editable by the provider.
+    Each consumer record can be created, edited, updated or deleted by the provider.
     Each consumer record will have empty boards that the provider can add issues to.
         When ('clicked') each issue will populate the board with cards from the Trello API.
             Each record will be pulled in from Trello API of the provider (in the future - own Trello like app inside the provider login)
