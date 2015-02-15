@@ -8,7 +8,10 @@ var sqlite3 = require( 'sqlite3' )
 var db = new sqlite3.Database( "app.db" );
 var bcrypt = require( "bcrypt" );
 var session = require( 'express-session' );
+var request = require('request');
 var app = express();
+
+var trelloKey = process.env.TRELLO_KEY;
 
 app.use( bodyParser.json( {
 	extended: false
@@ -25,7 +28,7 @@ app.use( express.static( __dirname + '/public' ) );
 
 app.get( '/', function ( req, res ) {
 	console.log("serving index.html");
-	res.sendfile( __dirname + '/index.html' );
+	res.send( __dirname + '/index.html' );
 } );
 
 app.post( '/session', function ( req, res ) {
@@ -61,7 +64,7 @@ app.post( '/session', function ( req, res ) {
 app.get( '/user_page', function ( req, res ) {
 	if ( req.session.valid_user ) {
 		console.log("serving user_page.html");
-		res.sendfile( __dirname + '/user_page.html' );
+		res.send( __dirname + '/user_page.html' );
 	}
 	else {
 		res.redirect( '/' )
