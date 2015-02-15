@@ -10,7 +10,7 @@ var bcrypt = require( "bcrypt" );
 var session = require( 'express-session' );
 var app = express();
 
-app.use( bodyParser.urlencoded( {
+app.use( bodyParser.json( {
 	extended: false
 } ) );
 app.use( cors() );
@@ -82,6 +82,7 @@ app.post( '/user', function ( req, res ) {
 		} );
 } );
 
+//CRUD routes for patients - admin side
 app.get( '/patients', function ( req, res ) {
   db.all( "SELECT * FROM patients", function ( err, rows ) {
     if ( err ) {

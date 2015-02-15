@@ -9,7 +9,7 @@
         <script src = "./js/collections/patient_collection.js"></script>
         <script src = "./js/views/patient_view.js"></script>
         <!-- list of patients -->
-        <ul id="patientList">
+        <ul id="patientsList">
         </ul>
         <!-- Add patient form -->
         <h3>Index: Add a patient here:</h3>
@@ -19,13 +19,13 @@
             <button id = "addNewPatient">Add patient</button>
         </div>
         <script type = "text/template" id = "patientTemplate">
-                    //display patient, edit & delete buttons
+                    
                     <span class = "patient">
                         <%= patient.name %> is a <%= patient.sex %>
                         <button class = "editButton">Edit</button>
                         <button class = "deleteButton">Delete</button>
                     </span>
-                    //editing
+
                     <span class = "editForm" style = "display: none">
                         <input type = "text" id = "newName<%= patient.id %>"
                             value = "<%= patient.name %>"> is a

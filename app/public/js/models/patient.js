@@ -20,5 +20,5 @@ var Patient = Backbone.Model.extend({
 		} if(attributes.sex === undefined){
 			return "no sex entered";
 		}
-	},
+	}
 });

@@ -25,15 +25,26 @@ $( document )
 			template: _.template( $( '#patientTemplate' )
 				.html() ),
 
-			deletePatient: function () {
-				this.model.destroy();
+			events: {
+				'click .deleteButton': 'deletePatient',
+				'click .editButton': 'editPatient',
+				'click .updateButton': 'updatePatient'
 			},
 
-			createPatient: function () {
-				var nameField = this.$( '#newPatientName' );
-				var sexField = this.$( '#newPatientSex' );
-				var newPatientName = nameField.val();
-				var newPatientSex = sexField.val();
+			editPatient: function() {
+				this.$('.patient').hide();
+				this.$('.editForm').show();
+			},
+
+			updatePatient: function() {
+				var newName = this.$('#newName' + this.model.id).val();
+				var newSex = this.$('#newSex' + this.model.id).val();
+				this.model.set({name: newName, sex: newSex});
+				this.model.save;
+			},
+
+			deletePatient: function () {
+				this.model.destroy();
 			},
 
 			render: function () {
